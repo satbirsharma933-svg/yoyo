@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Love Story Ultra 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    color:white;
+    overflow-x:hidden;
+    overflow-y:auto;
+    text-align:center;
+
+    background:linear-gradient(40deg,blue,deeppink,purple,red,blue);
+    background-size: 1000% 1000%;
+    animation: bgMove 9s ease infinite;
+}
+#subText{
+            white-space: pre-line;
+}
+#letterText{
+white-space: pre-line;
+}
+#welcomeText::after,
+#subText::after{
+content: "|";
+animation: blink 1s infinite;
+}
+@keyframes blink{
+0%,100%{opacity:1;}
+50%{opacity:0;}
+}   
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    margin: 120px auto;
+    background: #ff4d6d;
+    border-radius: 10px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+/* flap */
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff758f;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+/* hide letter initially */
+.envelope .letterBox {
+    top: 30%;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 0.8s ease;
+}
+
+/* open animation */
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letterBox {
+    opacity: 1;
+    transform: translateY(-40px);
+} 
+.letterBox::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ff4d6d, #ff85a2, #ffc2d1);
+    opacity: 0.2;
+    filter: blur(20px);
+    z-index: -1;
+}
+.letterBox{
+    width: 92vw;
+    height: 92vw;
+    max-width: 420px;
+    max-height: 420px;
+
+    margin: 60px auto;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;   /* important */
+}
+.letterTitle {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ff9acb;
+}
+.letterBox::-webkit-scrollbar{
+    display:none;
+}
+.letterContent{
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 1.8;
+    font-family: 'Courier New', cursive;
+    white-space: pre-line;
+}
+.letterScroll{
+    flex:1;
+    overflow-y:auto;
+}
+
+.letterButtons {
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.love {
+    background: linear-gradient(45deg, #ff4d6d, #ff85a2);
+    color: white;
+}
+
+.btn.sad {
+    background: #333;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* 🌈 SMOOTH FLOW */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* PAGES */
+.page{
+    display:none;
+    height:100vh;
+    padding-top:80px;
+}
+
+/* SHOW */
+.show{display:block;}
+
+/* 💖 ULTRA GLOW BUTTON */
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(40deg,pink,deeppink,hotpink,red,blue);
+    color:black;
+    margin:10px;
+    cursor:pointer;
+
+    box-shadow:0 0 15px pink,0 0 30px deeppink;
+    animation:glowBtn 1.2s infinite alternate;
+}
+
+@keyframes glowBtn{
+    0%{transform:scale(1); box-shadow:0 0 10px pink;}
+    100%{transform:scale(1.08); box-shadow:0 0 40px violet;}
+}
+/* FLOATING ELEMENTS */
+
+.balloon,.bubble,.butterfly,.heart{
+    position:absolute;
+}
+
+/* ⚡ PERFORMANCE BOOST */
+.heart {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* 🎈 BALLOON */
+.balloon{
+    width:35px;
+    height:50px;
+    border-radius:50%;
+    animation:up 7s linear infinite;
+}
+
+@keyframes up{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-120vh);}
+}
+
+/* 🫧 BUBBLE */
+.bubble{
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius:50%;
+    animation:up 3s linear infinite;
+}
+
+/* 💖 FIREWORK */
+.p{
+    position:absolute;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    animation:boom 6s ease-out forwards;
+}
+
+@keyframes boom{
+    0%{transform:translate(0,0);opacity:1;}
+    100%{transform:translate(var(--x),var(--y));opacity:0;}
+}
+
+/* TITLE */
+h1,h2{
+    text-shadow:0 0 20px pink;
+}
+
+/* 💓 HEARTBEAT EFFECT */
+h1{
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    25%{transform:scale(1.05);}
+    50%{transform:scale(1);}
+    75%{transform:scale(1.08);}
+    100%{transform:scale(1);}
+}
+
+#heartContainer{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.heart6{
+    position:absolute;
+    color:pink;
+    font-size:20px;
+    animation: floatHeart 4s linear forwards;
+}
+
+@keyframes floatHeart{
+    0%{transform:translateY(0) scale(1); opacity:1;}
+    100%{transform:translateY(-120vh) scale(1.8); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="p1" class="page show">
+<h1 id="welcomeText"></h1>
+<p id="subText" style="margin-top:10px;"></p>
+<button onclick="go('p2')">Start ➡️</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="p2" class="page">
+<h2>h@ppiesst BIRTHDAY miee cutiee piee🖤♾️</h2>
+<p>wanna see surprise!???</p>
+<button onclick="go('p3')">YES 💖</button>
+<button onmouseover="move(this)">NO...phle bhav khaunga😏</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="p3" class="page">
+<h2>beta dekhna tho pdega😏bhav khane a hk bss mera hai😂</h2>
+<p>our sweetest memories💖</p>
+<button onclick="go('p4')">Next ➡️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div id="p4" class="page">
+  <div class="envelope" onclick="openLetter()">
+      <div class="flap"></div>
+    <div class="letterBox" id="letterBox">
+    <h2 class="letterTitle">💌 My Letter To You</h2>
+
+<div class="letterScroll">
+    <p id="letterText" class="letterContent"></p>
+</div>
+      <div class="letterButtons">
+        <button onclick="go('p5')" class="btn sad">prr mei pyr ni krta..hrr!!🥺</button>
+        <button onmouseover="move(this)" class="btn love">
+          i love uhh too forever meri jaan🖤♾️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- PAGE 5 -->
+<div id="p5" class="page">
+
+<h2> pyr ni krte dhokaaaaa😭🥺</h2>
+
+<button onclick="go('p6')" onmouseover="move(this)">baby bht pyr krta hu😢</button>
+<button onclick="breakupFlow()">haa pyr ni krta🥺❤️</button>
+<p id="m"></p>
+
+<div id="secondChance" style="display:none;">
+<h3>chlo ek mauka aur 🥺</h3>
+<button onclick="go('p6')">Yes bht bht pyr krta hu🥺💖</button>
+<button onclick="finalNo()">No...pyr ni ishq mohbbat sb krta hu</button>
+</div>
+</div>
+
+<!-- PAGE 6-->
+<div id="p6" class="page">
+    <h1>💖 YOU + ME FOREVER 💖</h1>
+    <div id="heartContainer"></div>
+</div>
+
+<script>
+let fwStarted = false;
+let maxItems = 40;
+
+/* SWITCH */
+let heartIntervalStarted = false;
+
+function go(id){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+    document.getElementById(id).classList.add('show');
+ 
+   if(id=="p4") typeLetter();
+
+    // fireworks only on selected pages
+    if(["p1","p2","p4","p6"].includes(id)){
+        startFireworks();
+    }
+
+    // 💖 page 6 heart illusion 
+    if(id == "p6" && !heartIntervalStarted){
+        heartIntervalStarted = true;
+
+        setInterval(startHeartIllusion, 300);
+    }
+}
+/* MOVE BUTTON */
+function move(btn){
+    btn.style.position="absolute";
+btn.style.left = Math.random()*70 + "%";
+btn.style.top = Math.random()*70 + "%";
+}
+/* BREAKUP */
+function breakupFlow(){
+document.getElementById("m").innerHTML="Thik h breakup 🙂";
+
+setTimeout(()=>{
+document.getElementById("m").innerHTML="";
+document.getElementById("secondChance").style.display="block";
+},2000);
+}
+
+function finalNo(){
+document.getElementById("m").innerHTML="awww mera babyyy i lovee uhhh tooo so much mere guchuu puchuuu..🥺";
+}
+
+/* TYPE TEXT */
+function typeLetter(){
+    let text =`From the day when I reached you, everything changed 💖I never felt this important to someone..You turned my normal days into something special,my silence into comfort, and my smile into something real.
+
+Maybe I don’t express everything perfectly,
+but trust me… my love for you grows every single day 🖤
+
+No matter what happens,
+it's always going to be — YOU + ME ♾️✨
+
+\n our every single day every single second is very important!!! haa thk h baby hm dhyan ni rkhte aapko gussa dilate h but i'm very responsible aapke sth
+kbhi feel ni hota ki bdi ho gyi dhyan rkhna h hr chij ka..i always think only a thing nd i.e. *YOU ARE HERE*\n bht mn krta h irresponsible bnne ka free feel hota hai aur jb aap preshaan hote ho ya gussa krte ho meri hrkto pr tho bht mza aata h😂
+i'm very luckyy baby that The Kanha ji has given u to me!! you are not a random guy ..you are fruit of my prayers...\n nd i gonna lovee uu moreee and moree thaat nobody can love u as me🥺
+meri subh ka first thought ho aap..raat ki last yaad ho aap!! i will never ever leave u never♾️ dete honge log jaan apne love ke liye but hm aapko loyalty denge..100 male frnds mei rhke aapko chhoose krnge..hr kisiko chhodke aapke sth rhenge..i trust u baby end mei sb thk kroge and hm poora support krnge!!\n i love u so much baby!!\n i loveee uhhh forever🖤
+today is not only your birthday it's alsoo the day of our beautiful relationship that never ever gonna fade!!!\n baby🥺 do u love me??`;
+    let el = document.getElementById("letterText");
+    if(!el || el.innerHTML !== "") return;
+    let i = 0;
+
+    function typing(){
+        if(i < text.length){
+            el.innerHTML += text[i++];
+            setTimeout(typing, 40);
+        }
+    }
+
+    typing();
+}
+/* 💖 H1 typing */
+function typeH1(){
+
+let text1 = "Welcome babieee💖today is ur very very big day!!✨";
+let el1 = document.getElementById("welcomeText");
+if(!el1) return;
+
+el1.innerHTML = "";
+let i = 0;
+
+let t1 = setInterval(()=>{
+    if(i < text1.length){
+        el1.innerHTML += text1[i++];
+    } else {
+        clearInterval(t1);
+        typeP(); 
+    }
+},60);
+}
+
+function typeP(){
+
+let text2 = "not only for u..for me also!! nd i just wanna make this day unforgettable and special to u🖤\n phle jaisa enjoyment na shi but pyr phle se bht zydaa hai!!i🥺🖤aur ye hmesa bdhega♾️💫";
+let el2 = document.getElementById("subText");
+if(!el2) return;
+
+el2.innerHTML = "";
+let j = 0;
+
+let t2 = setInterval(()=>{
+    if(j < text2.length){
+        el2.innerHTML += text2[j++];
+    } else {
+        clearInterval(t2);
+    }
+},40);
+}
+
+/* 🚀 start */
+document.addEventListener("DOMContentLoaded", function(){
+    typeH1();
+});
+
+/* 🎆 FIREWORKS */
+function fire(x,y){
+for(let i=0;i<20;i++){
+let d=document.createElement("div");
+d.className="p";
+
+let a=Math.random()*2*Math.PI;
+let r=Math.random()*180;
+
+d.style.left=x+"px";
+d.style.top=y+"px";
+
+d.style.setProperty("--x",Math.cos(a)*r+"px");
+d.style.setProperty("--y",Math.sin(a)*r+"px");
+
+d.style.background=`hsl(${Math.random()*360},100%,60%)`;
+
+document.body.appendChild(d);
+setTimeout(()=>d.remove(),1000);
+}
+}
+
+/* AUTO FIREWORKS */
+function startFireworks(){
+    if(fwStarted) return;
+    fwStarted = true;
+
+    setInterval(()=>{
+        let page2 = document.getElementById("p2").classList.contains("show");
+        let page4 = document.getElementById("p4").classList.contains("show");
+        let page6 = document.getElementById("p6").classList.contains("show");
+
+        if(!(page2 || page4 || page6)) return;
+
+        fire(
+            Math.random()*window.innerWidth,
+            Math.random()*window.innerHeight/2
+        );
+    },800);
+}
+/* FLOATING OBJECTS (HEAVY CONTINUOUS) */
+
+function createBalloon(){
+if(document.querySelectorAll('.balloon').length > maxItems) return;
+
+let b = document.createElement("div");
+b.className="balloon";
+b.style.left=Math.random()*100+"vw";
+b.style.background=`hsl(${Math.random()*360},80%,60%)`;
+
+document.body.appendChild(b);
+setTimeout(()=>b.remove(),8000);
+}
+
+
+function createBubble(){
+if(document.querySelectorAll('.bubble').length > maxItems) return;
+
+let bu=document.createElement("div");
+bu.className="bubble";
+bu.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(bu);
+setTimeout(()=>bu.remove(),6000);
+}
+
+function createHeart(){
+    if(document.querySelectorAll('.heart').length > maxItems) return;
+
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+
+    let size = 15 + Math.random()*25;
+
+    h.style.cssText = `
+        position:absolute;
+        left:${Math.random()*100}vw;
+        top:100vh;
+        font-size:${size}px;
+        opacity:0.9;
+        pointer-events:none;
+        will-change:transform,opacity;
+    `;
+
+    document.body.appendChild(h);
+
+    let drift = (Math.random()*60 - 30);
+
+    h.animate([
+        { transform:`translate(0,0) scale(1)`, opacity:1 },
+        { transform:`translate(${drift}px,-120vh) scale(1.5)`, opacity:0 }
+    ],{
+        duration: 4000 + Math.random()*2000,
+        easing: "ease-out"
+    });
+
+    setTimeout(()=>h.remove(),5000);
+}
+setInterval(createBalloon, 1500);
+setInterval(createBubble, 1800);
+setInterval(createHeart, 800);
+
+function startHeartIllusion(){
+    if(document.getElementById("p6").classList.contains("show")){
+        let h = document.createElement("div");
+        h.className = "heart6";
+        h.innerHTML = "💖";
+
+        h.style.left = Math.random()*100 + "vw";
+        h.style.top = "100vh";
+
+        document.getElementById("heartContainer").appendChild(h);
+
+        setTimeout(()=>h.remove(), 4000);
+    }
+}
+function openLetter(){
+    let env = document.querySelector(".envelope");
+    env.classList.add("open");
+
+    setTimeout(typeLetter, 600);
+}
+
+</script>
+</body>
+</html>
